@@ -1,18 +1,40 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
+
+export async function middleware(request) {
+  const token = request.cookies.get('authToken')?.value;
+  const { pathname } = request.nextUrl;
+
+  // ログインが必要な保護ルート
+  const protectedRoutes = ['/admin', '/profile', '/settings'];
+
+  // ログインページアクセス制御
+  if (pathname.startsWith('/login')) {
+    if (token) {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
+    return NextResponse.next();
+  }
+
+  // 保護ルートアクセス制御
+  if (protectedRoutes.some(route => pathname.startsWith(route))) {
+    if (!token) {
+      return NextResponse.redirect(new URL('/login', request.url));
+    }
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
-  matcher: "/integrations/:path*",
+  matcher: [
+    '/admin/:path*', 
+    '/profile/:path*', 
+    '/settings/:path*', 
+    '/login', 
+    '/integrations/:path*', 
+    '/sports/:path*', 
+    '/entertainment/:path*', 
+    '/lifestyle/:path*', 
+    '/technology/:path*'
+  ]
 };
-
-export function middleware(request) {
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-project-id", "5eba0f82-7272-41ca-a57e-b620fd20412d");
-
-  request.nextUrl.href = `https://www.example.com${request.nextUrl.pathname}`;
-
-  return NextResponse.rewrite(request.nextUrl, {
-    request: {
-      headers: requestHeaders,
-    },
-  });
-}
