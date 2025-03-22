@@ -1,101 +1,10 @@
-/* Tailwind CSSの基本スタイルをインポート */
+/* Tailwind CSSの基本スタイル */
 @tailwind base;
-
-/* Tailwind CSSのコンポーネントスタイルをインポート */
 @tailwind components;
-
-/* Tailwind CSSのユーティリティスタイルをインポート */
 @tailwind utilities;
 
-/* デザイントークン変数 */
-:root {
-  /* カラーパレット */
-  --color-text-primary: 17 24 39;
-  --color-text-secondary: 107 114 128;
-  --color-background-primary: 255 255 255;
-  --color-background-secondary: 249 250 251;
-  
-  /* 状態色 */
-  --color-hover: 243 244 246;
-  --color-active: 229 231 235;
-  
-  /* デザインシステム */
-  --radius-default: 0.5rem;
-  --shadow-default: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --transition-duration: 150ms;
-}
-/* Tailwind CSSの基本スタイルをインポート */
-@tailwind base;
-
-/* Tailwind CSSのコンポーネントスタイルをインポート */
-@tailwind components;
-
-/* Tailwind CSSのユーティリティスタイルをインポート */
-@tailwind utilities;
-
-/* デザインシステム変数 */
-:root {
-  /* カラーパレット */
-  --color-primary: 59 130 246;
-  --color-secondary: 107 114 128;
-  --color-success: 34 197 94;
-  --color-warning: 234 179 8;
-  --color-error: 239 68 68;
-  
-  /* テキストカラー */
-  --color-text-primary: 17 24 39;
-  --color-text-secondary: 107 114 128;
-  
-  /* 背景カラー */
-  --color-background-primary: 255 255 255;
-  --color-background-secondary: 249 250 251;
-  
-  /* インタラクション */
-  --color-hover: 243 244 246;
-  --color-active: 229 231 235;
-  
-  /* タイミング */
-  --animation-duration: 300ms;
-  --transition-duration: 150ms;
-  
-  /* 形状 */
-  --radius-default: 0.5rem;
-  --shadow-default: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-}
-/* Tailwind CSSの基本スタイルをインポート */
-@tailwind base;
-
-/* Tailwind CSSのコンポーネントスタイルをインポート */
-@tailwind components;
-
-/* Tailwind CSSのユーティリティスタイルをインポート */
-@tailwind utilities;
-
-/* デザイントークン変数 */
-:root {
-  /* カラーパレット */
-  --color-text-primary: 17 24 39;
-  --color-text-secondary: 107 114 128;
-  --color-background-primary: 255 255 255;
-  --color-background-secondary: 249 250 251;
-  
-  /* 状態色 */
-  --color-hover: 243 244 246;
-  --color-active: 229 231 235;
-  
-  /* デザインシステム */
-  --radius-default: 0.5rem;
-  --shadow-default: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --transition-duration: 150ms;
-}
-/* Tailwind CSSの基本スタイルをインポート */
-@tailwind base;
-
-/* Tailwind CSSのコンポーネントスタイルをインポート */
-@tailwind components;
-
-/* Tailwind CSSのユーティリティスタイルをインポート */
-@tailwind utilities;
+/* アニメーションスタイルのインポート */
+@import './styles/animations.css';
 
 /* デザインシステム変数 */
 :root {
@@ -111,8 +20,8 @@
 /* グローバルスタイル */
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+  @apply bg-[#0D0D0D] text-white;
 }
 
 /* インタラクティブ要素の基本スタイル */
@@ -122,20 +31,13 @@ a {
     transform var(--animation-duration) ease,
     opacity var(--animation-duration) ease,
     background-color var(--animation-duration) ease;
-  @apply rounded-[var(--radius-default)] focus:outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-gray-900;
+  @apply rounded-[var(--radius-default)] focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
 
 button:hover,
 a:hover {
   transform: scale(1.05);
   opacity: 0.9;
-}
-
-/* ダークモード対応メディアクエリ */
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
 
 /* レスポンシブブレークポイント */

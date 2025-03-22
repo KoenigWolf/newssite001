@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
-    // pdfjsを動作させるためにcanvasを外部モジュールとして設定
-    config.externals = [
-      ...config.externals,
-      { canvas: "canvas" }
-    ];
-    return config;
+  images: {
+    domains: ['source.unsplash.com'],
+    deviceSizes: [640, 768, 1024, 1280, 1536],
+    formats: ['image/webp']
   },
-};
+  reactStrictMode: true,
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
